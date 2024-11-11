@@ -21,13 +21,6 @@ app.post('/save-data', (req, res) => {
 
   // Append data to a file
   fs.appendFile('user_data.txt', data, (err) => {
-    if (err) {
-      console.error('Error writing to file:', err);
-      return res.status(500).send('Error saving data');
-    }
-
-    // Send a response back to the client
-    res.send('Data saved successfully');
   });
 });
 
