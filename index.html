@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 400px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #1877f2;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #606770;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccd0d5;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      outline: none;
+      border-color: #1877f2;
+    }
+    .login-button {
+      background-color: #1877f2;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .login-button:hover {
+      background-color: #145dbf;
+    }
+    .link {
+      display: block;
+      margin-top: 15px;
+      color: #1877f2;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Facebook</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email or Phone</label>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="button" class="login-button" onclick="getInput()">Log In</button>
+    </form>
+    <a href="#" class="link">Forgot password?</a>
+    <a href="#" class="link">Create new account</a>
+  </div>
+
+  <script>
+    function getInput() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      console.log("Email:", email);
+      console.log("Password:", password);
+      // You can now send these values to a server or use them as needed
+      alert("Email: " + email + "\nPassword: " + password);
+    }
+  </script>
+</body>
+</html>
