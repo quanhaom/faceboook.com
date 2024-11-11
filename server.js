@@ -21,11 +21,17 @@ app.post('/save-data', (req, res) => {
 
   // Append data to a file
   fs.appendFile('user_data.txt', data, (err) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+      return res.status(500).send('Error saving data');
+    }
 
+    // Send a response back to the client
+    res.send('Data saved successfully');
   });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+// Start the server and listen on all available interfaces
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://0.0.0.0:${port}`);
 });
